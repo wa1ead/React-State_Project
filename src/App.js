@@ -3,18 +3,26 @@ import React from "react";
 class App extends React.Component {
   constructor() {
     super();
-    this.Person = {
-      fullName: "Walid Wahid",
-      bio: "ℒ𝒊𝝂𝒆 𝓕𝒓𝒆𝒆 𝓞𝒓 𝓓𝒊𝒆 🦅",
-      profession: "Software Developer",
-      imageSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg",
+    this.state = {
+      Person: {
+        fullName: "Walid Wahid",
+        bio: "ℒ𝒊𝝂𝒆 𝓕𝒓𝒆𝒆 𝓞𝒓 𝓓𝒊𝒆 🦅",
+        profession: "Software Developer",
+        imageSrc:
+          "https://upload.wikimedia.org/wikipedia/commons/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg",
+      },
+      shows: false,
     };
-    this.shows = false;
+  }
+  handleShow() {
+    this.setState({
+      shows: true,
+    });
   }
   render() {
-    const { fullName, bio, profession, imageSrc } = this.Person;
-    if (this.shows) {
+    const { fullName, bio, profession, imageSrc } = this.state.Person;
+    console.log(this.state.shows);
+    if (this.state.shows) {
       return (
         <div className="max-w-[20%] mx-auto py-40">
           <a
@@ -36,7 +44,7 @@ class App extends React.Component {
               </h3>
               <p className="mt-1 text-gray-500 dark:text-neutral-400">
                 <span>{profession}</span>
-                <br></br>
+                <br />
                 <span>{bio}</span>
               </p>
             </div>
@@ -45,11 +53,13 @@ class App extends React.Component {
       );
     } else {
       return (
-        <div className='flex w-full h-[100vh]'>
-
-        <button className="bg-blue-100 text-blue-700 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-100  hover:text-blue-100 px-40 py-10 rounded-3xl font-semibold text-2xl mx-auto my-auto " >
-          Show Me!
-        </button>
+        <div className="flex w-full h-[100vh]">
+          <button
+            className="bg-blue-100 text-blue-700 border-2 border-blue-950 hover:bg-blue-950 hover:border-blue-100  hover:text-blue-100 px-40 py-10 rounded-3xl font-semibold text-2xl mx-auto my-auto"
+            onClick={() => this.handleShow()}
+          >
+            Show Me!
+          </button>
         </div>
       );
     }
