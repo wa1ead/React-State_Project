@@ -12,6 +12,7 @@ class App extends React.Component {
           "https://upload.wikimedia.org/wikipedia/commons/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg",
       },
       shows: false,
+      mount: 0,
     };
   }
   handleShow() {
@@ -21,7 +22,10 @@ class App extends React.Component {
   }
   render() {
     const { fullName, bio, profession, imageSrc } = this.state.Person;
-    console.log(this.state.shows);
+    // setInterval(() => {
+    //   this.setState({ mount: this.state.mount + 1 });
+    // }, 100);
+    // console.log(this.state.mount);
     if (this.state.shows) {
       return (
         <div className="max-w-[20%] mx-auto py-40">
@@ -49,6 +53,7 @@ class App extends React.Component {
               </p>
             </div>
           </a>
+          <div>{this.state.mount}</div>
         </div>
       );
     } else {
