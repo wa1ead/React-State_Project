@@ -15,6 +15,20 @@ class App extends React.Component {
       mount: 0,
     };
   }
+  componentDidMount() {
+    this.interval = setInterval(
+      () => {
+        this.setState((prevState) => ({
+          mount: prevState.mount + 1,
+        }));
+      },
+
+      1000
+    );
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
   handleShow() {
     this.setState({
       shows: true,
@@ -22,10 +36,6 @@ class App extends React.Component {
   }
   render() {
     const { fullName, bio, profession, imageSrc } = this.state.Person;
-    // setInterval(() => {
-    //   this.setState({ mount: this.state.mount + 1 });
-    // }, 100);
-    // console.log(this.state.mount);
     if (this.state.shows) {
       return (
         <div className="max-w-[20%] mx-auto py-40">
