@@ -63,7 +63,7 @@ class App extends React.Component {
               </p>
             </div>
           </a>
-          <div>{this.state.mount}</div>
+          <div>{this.state.mount} s</div>
         </div>
       );
     } else {
